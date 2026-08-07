@@ -9,7 +9,7 @@
 <body>
     <div id="header">
         <h1>Unit Converter</h1>
-                <nav>
+        <nav>
             <a href="length.php">Length</a>
             <a href="weight.php">Weight</a>
             <a href="temperature.php">Temperature</a>
