@@ -53,9 +53,9 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         <div id="units">
             <label for="from-unit">From</label>
             <select name="from-unit" id="from-unit">
-                <option value="celsius">Celsius</option>
+                <option value="celsius" selected>Celsius</option>
                 <option value="fahrenheit">Fahrenheit</option>
-                <option value="kelvin" selected>Kelvin</option>
+                <option value="kelvin">Kelvin</option>
             </select>
             <label for="to-unit">To</label>
             <select name="to-unit" id="to-unit">
