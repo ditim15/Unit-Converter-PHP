@@ -41,6 +41,11 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     } else {
         $result = round(from_kelvin($kelvin, $to_unit), 2);
     }
+
+    if ($_POST["value"] === '' || !is_numeric($_POST["value"])) {
+        $result = null;
+        $error = "Please enter a valid number.";
+    }
 }
 
 ?>

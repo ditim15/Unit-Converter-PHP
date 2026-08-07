@@ -1,6 +1,7 @@
 <?php
 
 $result = null;
+$error = null;
 
 $to_grams = [
     "milligrams" => 0.001,
@@ -16,6 +17,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $to_unit = $_POST['to-unit'];
     $grams = $value * $to_grams[$from_unit];
     $result = round($grams / $to_grams[$to_unit], 4);
+
+    if ($_POST["value"] === '' || !is_numeric($_POST["value"])) {
+        $result = null;
+        $error = "Please enter a valid number.";
+    }
 }
 
 ?>
@@ -49,3 +55,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <?php if ($result !== null): ?>
         <p><?= $value ?> <?= $from_unit ?> is equal to <?= $result ?> <?= $to_unit ?></p>
     <?php endif; ?>
+    <?php if ($error !== null): ?>
+        <p class="error"><?= $error ?></p>
+    <?php endif; ?>
+<?php include 'footer.php'; ?>

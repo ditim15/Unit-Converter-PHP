@@ -1,6 +1,7 @@
 <?php
 
 $result = null;
+$error = null;
 
 $to_meters = [
     "millimeters" => 0.001,
@@ -19,7 +20,14 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $to_unit = $_POST["to-unit"];
     $meters = $value * $to_meters[$from_unit];
     $result = round($meters / $to_meters[$to_unit], 4);
+
+    if ($_POST["value"] === '' || !is_numeric($_POST["value"])) {
+        $result = null;
+        $error = "Please enter a valid number.";
+    }
 }
+
+
 
 ?>
 
@@ -35,7 +43,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                 <option value="centimeters">Centimeters</option>
                 <option value="meters" selected>Meters</option>
                 <option value="kilometers">Kilometers</option>
-                <option value="inches">Inchs</option>
+                <option value="inches">Inches</option>
                 <option value="feet">Feet</option>
                 <option value="yards">Yards</option>
                 <option value="miles">Miles</option>
@@ -46,7 +54,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                 <option value="centimeters">Centimeters</option>
                 <option value="meters">Meters</option>
                 <option value="kilometers">Kilometers</option>
-                <option value="inches">Inchs</option>
+                <option value="inches">Inches</option>
                 <option value="feet" selected>Feet</option>
                 <option value="yards">Yards</option>
                 <option value="miles">Miles</option>
@@ -57,5 +65,8 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
     <?php if ($result !== null): ?>
         <p><?= $value ?> <?= $from_unit ?> is equal to <?= $result ?> <?= $to_unit ?></p>
+    <?php endif; ?>
+    <?php if ($error !== null): ?>
+        <p class="error"><?= $error ?></p>
     <?php endif; ?>
 <?php include 'footer.php'; ?>
