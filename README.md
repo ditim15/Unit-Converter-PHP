@@ -11,7 +11,6 @@ to keep the conversion logic simple and consistent.
 
 ## Tech Stack
 - **Backend:** PHP
-- **Templating:** Jinja2
 - **Frontend:** HTML, CSS
 
 ## Project Structure
