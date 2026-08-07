@@ -1,7 +1,6 @@
 <?php
 
 $result = null;
-$error = null;
 
 $to_meters = [
     "millimeters" => 0.001,
